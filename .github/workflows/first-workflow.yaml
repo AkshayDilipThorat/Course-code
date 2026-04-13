@@ -11,4 +11,18 @@ jobs:
         run: |
           node -v
           npm -v
-          
+  Parallel-job-macos:
+    runs-on: macos-latest
+    steps:
+      - name: View SW Version 
+        run: sw-vers
+      
+
+  dependent-job:
+    needs: run-shell-commands
+    runs-on: ubuntu-latest
+    steps:
+      - name: echo a string 
+        run: echo "This job runs after the first two jobs are completed"
+      - name: Error step
+        run: dpesentexist  
