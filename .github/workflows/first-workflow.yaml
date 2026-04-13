@@ -19,8 +19,8 @@ jobs:
       
 
   dependent-job:
-    needs: run-shell-commands
     runs-on: windows-latest
+    needs: run-shell-commands
     steps:
       - name: echo a string 
         run: echo "This job runs after the first two jobs are completed"
