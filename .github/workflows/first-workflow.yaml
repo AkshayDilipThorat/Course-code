@@ -15,7 +15,7 @@ jobs:
     runs-on: macos-latest
     steps:
       - name: View SW Version 
-        run: sw-vers
+        run: sw_vers
       
 
   dependent-job:
@@ -25,4 +25,4 @@ jobs:
       - name: echo a string 
         run: echo "This job runs after the first two jobs are completed"
       - name: Error step
-        run: dpesentexist  
+        run: doesnotexist  
