@@ -3,7 +3,8 @@ on:
   workflow_run:
     workflows: ["Repository Events"]
     types: [completed]
-
+    branches:
+      - main #matches the main branch, you can specify other branches or use patterns as needed
 jobs:
   run-on-workflow-run:
     runs-on: ubuntu-latest

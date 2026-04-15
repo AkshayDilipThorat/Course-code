@@ -1,8 +1,28 @@
 name: Repository Events
 on: 
   push:
+    branches: 
+      - main
+      - "feature/*"   #matches any branch that starts with "feature/"
+      - "feature/**"   #matches any branch that starts with "feature/" ,eg.  frature/akshaya/26.04 and can include subdirectories
+      - "!feature/ignor" #exclude a specific branch
+
+      # branches-ignore:
+      #   - "feature/ignor"
+
+    tags:
+    - "v1.*"   #matches any tag that starts with "v1. eg. v1.0, v1.1, v1.2.1 etc."
+    - "!v1.1.1" #exclude a specific tag
+    paths:
+      - "**.js"  #matches any file with .js extension in any directory
+      - "!app.js"  #exclude a specific file
   pull_request:
     types: [opened, assigned, synchronize, reopened]
+    branches:
+      - main
+    paths:
+      - "**.js" #matches any file with .js extension in any directory
+     
   issues:
     types: [opened] 
 jobs:
