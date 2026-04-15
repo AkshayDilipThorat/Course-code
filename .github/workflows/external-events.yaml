@@ -1,8 +1,11 @@
 name: Repository Dispatch
 on:
     repository_dispatch:
+        types: [build, deploy] # Specify the types of repository dispatch events to listen for
 jobs:
  echo-a-string:
     runs-on: ubuntu-latest
     steps:
-        - run: echo "This workflow runs when a repository dispatch event is triggered."
+        - run: |
+           echo "This workflow runs when a repository dispatch event is triggered."
+           echo ${{github.event.client_payload.env}} # Accessing custom payload data sent with the repository dispatch event
