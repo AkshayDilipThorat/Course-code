@@ -1,0 +1,40 @@
+name: Working Dirs and Shells
+on: [push]
+defaults:
+   run:
+     shell: bash   # default will be bash so windows will fail need to add default in job level
+    # working-directory: /de/ded
+jobs:
+ display-wd-info:
+   runs-on: ubuntu-latest
+   steps:
+     - name: Display Working Directory and List Files
+       run: |
+        pwd
+        ls -a
+        echo $GITHUB_SHA
+        echo $GITHUB_REOSITORY
+        echo $GITHUB_WORKSPACE
+     - name: Change Working Directory
+       working-directory: /home/runner   # need to define working directory here of ubantu
+       run: pwd    
+ display-wd-info-windows:
+   runs-on: windows-latest
+   defaults:
+       run:
+        shell: pwsh
+   steps:
+     - name: Display Working Directory and List Files
+       run: |
+        Get-Location
+        ls -a
+        echo $env:GITHUB_SHA
+        echo $env:GITHUB_REOSITORY
+        echo $env:GITHUB_WORKSPACE  
+     - name: Python Shells
+       shell: Python
+       run: |
+          import platform
+          print(platform.processor())
+             
+
