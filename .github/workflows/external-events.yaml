@@ -1,0 +1,8 @@
+name: Repository Dispatch
+on:
+    repository_dispatch:
+jobs:
+ echo-a-string:
+    runs-on: ubuntu-latest
+    steps:
+        - run: echo "This workflow runs when a repository dispatch event is triggered."
