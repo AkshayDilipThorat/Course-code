@@ -1,0 +1,13 @@
+name: Manually Triggered
+on: 
+  workflow_dispatch:
+jobs:
+  log-info:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          echo "This workflow was triggered manually."
+          echo "GITHUB_EVENT_NAME: $GITHUB_EVENT_NAME"
+          echo "GITHUB_REF: $GITHUB_REF"
+          echo "GITHUB_SHA: $GITHUB_SHA"
+          echo "GITHUB_REPOSITORY: $GITHUB_REPOSITORY"    
