@@ -27,9 +27,9 @@ jobs:
      - name: Display Working Directory and List Files
        run: |
         Get-Location
-        ls -a
+        ls -force
         echo $env:GITHUB_SHA
-        echo $env:GITHUB_REOSITORY
+        echo $env:GITHUB_REPOSITORY
         echo $env:GITHUB_WORKSPACE  
      - name: Python Shells
        shell: Python
