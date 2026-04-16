@@ -5,22 +5,26 @@ jobs:
     job-1:
         runs-on: ubuntu-latest
         steps:
-            - name: Run a command and check its status
+            - name: Step 1
               run: sleep 20
             
-            - name: Fail the step intentionally
+            - name: Step 2 
+              id: step-2
               run: exit 1
-                
+
             - name: Runs On Failure
-              if: failure()     # This step will only run if the previous step fails
-              run: echo "The previous step failed. Running this step." 
+              if: failure() && steps.step-2.conclusion == 'failure'  # This step will only run if step-2 fails
+              # if: success() && steps.step-2.conclusion == 'failure'  # this is by default not needed as the step will not run if the previous step fails, but it's added here for clarity
+              # if: steps.step-2.outcome == 'failure'
+              run: echo "Step 2 has failed" 
+
             - name: Runs On Success
             # this is not needed as the default behavior is to run the next step if the previous step succeeds, but it's added here for clarity
               if: success()     # This step will only run if the previous step succeeds
-              run: echo "The previous step succeeded. Running this step."   
+              run: echo "The previous step succeeded. Running this step." 
+
             - name: Runs On Always
              # if: success() || failure()  # This step will run regardless of the previous step's outcome
-              
               if: always()      # This step will run regardless of the previous step's outcome
               run: echo "This step runs regardless of the previous step's success or failure." 
               
