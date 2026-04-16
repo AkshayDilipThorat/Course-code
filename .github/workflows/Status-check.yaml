@@ -7,6 +7,10 @@ jobs:
         steps:
             - name: Run a command and check its status
               run: sleep 20
+            
+            - name: Fail the step intentionally
+              run: exit 1
+                
             - name: Runs On Failure
               if: failure()     # This step will only run if the previous step fails
               run: echo "The previous step failed. Running this step." 
