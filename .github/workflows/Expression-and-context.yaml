@@ -4,6 +4,7 @@ run-name: "Expression and Context by @${{ github.actor }} , event: ${{ github.ev
 jobs:
   expression-and-context:
     runs-on: ubuntu-latest
+    if: ${{ github.event_name == 'push' }} # This job will only run for push events
     steps:
       - name: Display Context Information
         id: expression
