@@ -16,8 +16,8 @@ jobs:
         run: echo '${{ github.ref }}' 
       - name: Set ENV VAR in Step
         run: |
-           echo "New_ENV_VAR=$(data)" >> $GITHUB_ENV"
-           echo "JOB_LEVEL_ENV=$RANDOM" >> $GITHUB_ENV
+           echo "New_ENV_VAR=$(data)" >> "$GITHUB_ENV"
+           echo "JOB_LEVEL_ENV=$RANDOM" >>S "$GITHUB_ENV"
       - name: Log custom ENV Vars
         env:
             STEP_LEVEL_ENV: Available only in this step
