@@ -8,4 +8,4 @@ jobs:
       - name: Log ENV Variables
         run: echo $GITHUB_REF
       - name: Log Context
-        run: echo '${{ github.ref }}''   
+        run: echo '${{ github.ref }}' 
