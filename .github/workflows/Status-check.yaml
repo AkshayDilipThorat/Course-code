@@ -12,10 +12,13 @@ jobs:
               id: step-2
               run: exit 1
 
-            - name: Runs On Failure
+            - name: Runs On step 2 Failure
               if: failure() && steps.step-2.conclusion == 'failure'  # This step will only run if step-2 fails
               # if: success() && steps.step-2.conclusion == 'failure'  # this is by default not needed as the step will not run if the previous step fails, but it's added here for clarity
               # if: steps.step-2.outcome == 'failure'
+              run: echo "Failure"
+            - name: Runs On Failure
+              if: failure() # This step will only run if any of the previous steps in the job have failed
               run: echo "Step 2 has failed" 
 
             - name: Runs On Success
