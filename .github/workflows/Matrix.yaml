@@ -8,7 +8,7 @@ on: [push]
 # {os: windows-latest, node-verision: 14, experimental: false}
 # {os: windows-latest, node-verision: 15, experimental: false}
 # {os: windows-latest, node-verision: 16, experimental: false}
-# {os: macos-latest, node-verision: 15}
+# {os: macos-latest, node-verision: 18}
 # {os: ununtu-latest, node-verision: 17}
 jobs:
   node-matrix:
@@ -21,7 +21,7 @@ jobs:
           - os: ubuntu-latest
             is-ubuntu: true
           - os: macos-latest
-            node-version: 15
+            node-version: 18
           - experimental: false
           - os: ubuntu-latest
             node-version: 16
@@ -37,6 +37,7 @@ jobs:
     runs-on: ${{matrix.os}}
     steps:
       - run: node -v
+      - run: echo '${{toJson(matrix)}}'
       - uses: actions/setup-node@v3
         with:
           node-version: ${{matrix.node-version}}
