@@ -1,13 +1,39 @@
 name: Matrix
 on: [push]
 
-
+# ----- ORIGINAL-----#
+# {os: ununtu-latest, node-verision: 14, is-ubuntu-latest: true, experimental: false}
+# {os: ununtu-latest, node-verision: 15, is-ubuntu-latest: true, experimental: false}
+# {os: ununtu-latest, node-verision: 16, is-ubuntu-latest: true, experimental: true}
+# {os: windows-latest, node-verision: 14, experimental: false}
+# {os: windows-latest, node-verision: 15, experimental: false}
+# {os: windows-latest, node-verision: 16, experimental: false}
+# {os: macos-latest, node-verision: 15}
+# {os: ununtu-latest, node-verision: 17}
 jobs:
   node-matrix:
+    continue-on-error: false
     strategy: 
       matrix:
         os: [ubuntu-latest, windows-latest]
         node-version: [14,15,16]
+        include:
+          - os: ubuntu-latest
+            is-ubuntu: true
+          - os: macos-latest
+            node-version: 15
+          - experimental: false
+          - os: ubuntu-latest
+            node-version: 16
+            experimental: true
+          - os: ubuntu-latest
+            node-version: 17  
+        exclude: 
+          - os: ubuntu-latest
+            node-version: 16
+
+      fail-fast: false   
+      # max-parallal: 3  
     runs-on: ${{matrix.os}}
     steps:
       - run: node -v
@@ -15,3 +41,4 @@ jobs:
         with:
           node-version: ${{matrix.node-version}}
       - run: node -v
+
