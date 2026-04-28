@@ -7,7 +7,7 @@ on:
        value: ${{ jobs.generate-output.outputs.date}}
 
 jobs:
-  calling-a-reusable-wf:
+  nested-reusable-workflow:
     uses: AkshayDilipThorat/workflow/.github/workflows/Reusable.yaml@main
     with: 
       name: 'Akshay'
