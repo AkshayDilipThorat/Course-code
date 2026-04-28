@@ -14,7 +14,7 @@ on:
 
 jobs:
   prepare-matrix:
-    runs-on: ununtu-latest
+    runs-on: ubuntu-latest
     steps:
       - uses: action/github-script@v6
         id: matrix-arrays
