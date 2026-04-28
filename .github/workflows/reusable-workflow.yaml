@@ -7,10 +7,16 @@ on:
        value: ${{ jobs.generate-output.outputs.date}}
 
 jobs:
+  calling-a-reusable-wf:
+    uses: AkshayDilipThorat/workflow/.github/workflows/Reusable.yaml@main
+    with: 
+      name: 'Akshay'
+    secrets:
+      access-token: ${{secrets.ACCESS_TOKEN}}
   generate-output:
     runs-on: ubuntu-latest
     outputs:
-      date: ${{ steps.date-step.outputs.date}}
+      date: ${{steps.date-step.outputs.date}}
     steps:
     - run: echo "date=$(date)" >> $GITHUB_OUTPUT
       id: date-step
