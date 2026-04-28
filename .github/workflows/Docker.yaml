@@ -36,5 +36,5 @@ jobs:
       - name: Run a bash script
         uses: docker://node:18.16-alpine3.17
         with:
-          entrypoint: ./script.show
+          entrypoint: ./script.sh
           args: "some string"    
