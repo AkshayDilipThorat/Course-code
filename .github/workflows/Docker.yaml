@@ -5,21 +5,11 @@ jobs:
   docker-job:
     runs-on: ubuntu-latest
     container:
-      image: node: 20.3-alpine3.17
-    # credentials:
-    # username:
-    #password
+      image: node:20.3-alpine3.17
       env:
         API_URL: some-url.com
-        ports: 
-          -80
-      #volumes:
-       # - vol-name:/path/in/container
-       # - /pat/to/container
-       # - /path/in/host:/path/in/container
-      # options: --cpus 1
     steps:
-      - name: Log Node & oS version
+      - name: Log Node & OS version
         run: |
           node -v
           cat /etc/os-release 
@@ -34,6 +24,4 @@ jobs:
         uses: docker://node:18.16-alpine3.17
         with:
           entrypoint: /usr/local/bin/node 
-          args: -v    
-
- 
+          args: -v
