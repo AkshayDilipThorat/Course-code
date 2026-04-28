@@ -14,14 +14,14 @@ on:
 
 jobs:
   prepare-matrix:
-    runs-on:ununtu-latest
+    runs-on: ununtu-latest
     steps:
       - uses: action/github-script@v6
-        is: matrix-arrays
+        id: matrix-arrays
         with: 
           script: "return {os: context.payload.inputs['os'].split(','), 'node-version': context.payload.inputs['node-version'].split(',')}"
           result-encoding: json
-      - run: echo  '${{steps.matrix-arrays.output.result}}'  
+      - run: echo '${{steps.matrix-arrays.outputs.result}}'  
 
       - run: echo "step-output=value" >> $GITHUB_OUTPUT
         id: step-1
